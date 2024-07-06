@@ -57,6 +57,13 @@ class OrganisationDetailView(APIView):
                 'statusCode': 404
             }, status=status.HTTP_404_NOT_FOUND)
 
+
+class OrganisationAddUserView(APIView):
+    """
+    View for adding a user to an organisation
+    """
+    permission_classes = [IsAuthenticated]
+
     def post(self, request, orgId):
         try:
             organisation = Organisation.objects.get(orgId=orgId, users=request.user)

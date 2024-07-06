@@ -1,6 +1,7 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import UserRegistrationSerializer, UserSerializer
 from organisation.serializers import OrganisationSerializer
@@ -61,3 +62,33 @@ class LoginView(APIView):
             'message': 'Authentication failed',
             'statusCode': 401
         }, status=status.HTTP_401_UNAUTHORIZED)
+
+
+class UserDetailView(APIView):
+    """
+    View for retrieving user details by userId
+    """
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, userId):
+        try:
+            user = User.objects.get(userId=userId)
+            if user == request.user:
+                serializer = UserSerializer(user)
+                return Response({
+                    'status': 'success',
+                    'message': 'User details retrieved successfully',
+                    'data': serializer.data
+                }, status=status.HTTP_200_OK)
+            else:
+                return Response({
+                    'status': 'error',
+                    'message': 'You do not have permission to view this user',
+                    'statusCode': 403
+                }, status=status.HTTP_403_FORBIDDEN)
+        except User.DoesNotExist:
+            return Response({
+                'status': 'error',
+                'message': 'User not found',
+                'statusCode': 404
+            }, status=status.HTTP_404_NOT_FOUND)
