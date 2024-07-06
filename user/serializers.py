@@ -2,30 +2,14 @@ from rest_framework import serializers
 from .models import User
 
 
-class UserSerializer(serializers.ModelSerializer):
-    """
-    Serializer for the user model
-    """
-
-    class Meta:
-        model = User
-        fields = ['userId', 'firstName', 'lastName', 'email', 'phone']
-
-
 class UserRegistrationSerializer(serializers.ModelSerializer):
-    """
-    Serializer for user registration
-    """
+    password = serializers.CharField(write_only=True)
 
     class Meta:
         model = User
-        fields = ['firstName', 'lastName', 'email', 'password', 'phone']
-        extra_kwargs = {'password': {'write_only': True}}
+        fields = ['email', 'firstName', 'lastName', 'phone', 'password']
 
     def create(self, validated_data):
-        """
-        Create a new user with a hashed password and return the user
-        """
         user = User(
             email=validated_data['email'],
             firstName=validated_data['firstName'],
@@ -35,3 +19,9 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['userId', 'email', 'firstName', 'lastName', 'phone']
