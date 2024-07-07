@@ -80,7 +80,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "organisation_api.wsgi.application"
 
 
-# Database
+# Database localhost
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 # DATABASES = {
@@ -94,7 +94,14 @@ WSGI_APPLICATION = "organisation_api.wsgi.application"
 #     }
 # }
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRESQL_ADDON_DB'),
+        'USER': os.getenv('POSTGRESQL_ADDON_USER'),
+        'PASSWORD': os.getenv('POSTGRESQL_ADDON_PASSWORD'),
+        'HOST': os.getenv('POSTGRESQL_ADDON_HOST'),
+        'PORT': os.getenv('POSTGRESQL_ADDON_PORT'),
+    }
 }
 
 
