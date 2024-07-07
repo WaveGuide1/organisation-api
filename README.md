@@ -5,12 +5,12 @@
 1. **User**
 2. **Organisation**
 
-## [Live_url] https://organisations.cleverapps.io/
+## [Live_url] https://ancestor-org.cleverapps.io/
 
 ### A) Authentication
 
 #### 1) Register API
-- **Endpoint:** `POST https://organisations.cleverapps.io/auth/register`
+- **Endpoint:** `POST https://ancestor-org.cleverapps.io/auth/register`
 - **Request Payload:**
 ```{
     "firstName": "String",
@@ -39,7 +39,7 @@
 }
 ```
 #### 2) Login
-- **Endpoint:** `POST https://organisations.cleverapps.io/auth/login`
+- **Endpoint:** `POST https://ancestor-org.cleverapps.io/auth/login`
 - **Request Payload:**
 
 ```
@@ -72,7 +72,7 @@
 ### B) User
 
 #### 1) Get User By User Id API
-- **Endpoint:** `GET https://organisations.cleverapps.io/api/users/<userId>`
+- **Endpoint:** `GET https://ancestor-org.cleverapps.io/api/users/<userId>`
 - **Request Payload:**
 
 
@@ -93,7 +93,7 @@
 ```
 
 #### 2) Add User to an Organisation API
-- **Endpoint:** `POST https://organisations.cleverapps.io/api/organisations/<orgId>/users`
+- **Endpoint:** `POST https://ancestor-org.cleverapps.io/api/organisations/<orgId>/users`
 - **Request Payload:**
 ```
 {
@@ -113,7 +113,7 @@
 ### C) Organisation
 
 #### 1) Create Organisation API
-- **Endpoint:** `POST https://organisations.cleverapps.io/api/organisations`
+- **Endpoint:** `POST https://ancestor-org.cleverapps.io/api/organisations`
 - **Request Payload:**
 ```
 {
@@ -136,7 +136,7 @@
 ```
 
 #### 2) Get All Organisation API
-- **Endpoint:** `GET https://organisations.cleverapps.io/api/organisations`
+- **Endpoint:** `GET https://ancestor-org.cleverapps.io/api/organisations`
 - **Request Payload:**
 
 
@@ -159,7 +159,7 @@
 ```
 
 #### 3) Get Organisation By Organisation Id API
-- **Endpoint:** `GET https://organisations.cleverapps.io/api/organisations/<orgId>`
+- **Endpoint:** `GET https://ancestor-org.cleverapps.io/api/organisations/<orgId>`
 - **Request Payload:**
 
 
