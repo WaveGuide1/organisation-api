@@ -62,7 +62,7 @@ class OrganisationAddUserView(APIView):
     """
     View for adding a user to an organisation
     """
-    permission_classes = []
+    permission_classes = [AllowAny]
 
     def post(self, request, orgId):
         try:
