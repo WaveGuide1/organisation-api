@@ -4,5 +4,5 @@ from .views import OrganisationListView, OrganisationDetailView, OrganisationAdd
 urlpatterns = [
     path('', OrganisationListView.as_view(), name='organisation-list'),
     path('<uuid:orgId>', OrganisationDetailView.as_view(), name='organisation-detail'),
-    path('<uuid:orgId>/users', OrganisationAddUserView.as_view(), name='organisation-add-user'),
+    path('/<uuid:orgId>/users', OrganisationAddUserView.as_view(), name='organisation-add-user'),
 ]
