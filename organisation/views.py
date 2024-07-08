@@ -62,7 +62,7 @@ class OrganisationAddUserView(APIView):
     """
     View for adding a user to an organisation
     """
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def post(self, request, orgId):
         try:
