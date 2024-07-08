@@ -1,1 +1,1 @@
-web: gunicorn organisation_api.wsgi
+web: gunicorn organisation_api.wsgi:application
