@@ -37,7 +37,7 @@ class OrganisationListView(APIView):
 
 class OrganisationDetailView(APIView):
     """
-    View for retrieving and adding users to an organisation
+    View for retrieving organisation created by user
     """
     permission_classes = [IsAuthenticated]
 
