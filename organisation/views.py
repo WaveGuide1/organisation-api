@@ -66,7 +66,7 @@ class OrganisationAddUserView(APIView):
 
     def post(self, request, orgId):
         try:
-            organisation = Organisation.objects.get(orgId=orgId, users=request.user)
+            organisation = Organisation.objects.get(orgId=orgId)
             user_id = request.data.get('userId')
             user = User.objects.get(userId=user_id)
             organisation.users.add(user)
